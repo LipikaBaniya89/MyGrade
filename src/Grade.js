@@ -235,7 +235,7 @@ function Grade({data,setDataItems}){
                         <tr> 
                             <th style={styles.textLeft}>SEMESTER</th>
                             <th style={styles.textLeft}>COURSE</th>
-                            <th style={styles.textleft}>GRADE</th>
+                            <th style={styles.textLeft}>GRADE</th>
                             <th colSpan={8}></th>
                         </tr>
                     </thead>
