@@ -57,6 +57,7 @@ function Grade({data,setDataItems}){
 
         const z= data.map((v,i) => {
 
+
             if (v.grade==="A") {
                 v.grade=4.0;
             } 
@@ -280,17 +281,6 @@ function Grade({data,setDataItems}){
                 </Table>
                 </div>
 
-                {/* <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
-                    <Table  style={{width:"650px"}}>
-                    <thead>
-                        <tr > 
-                            <th style={styles.textLeft}> SEMESTER 2/2019 : {(formatNumber(dataSem2))}</th>
-                            <th colSpan={3}></th>
-                        </tr >
-                    </thead>
-                </Table>
-                </div> */}
-
                 <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
                     <Table  style={{width:"650px"}}>
                     <thead>
@@ -326,17 +316,6 @@ function Grade({data,setDataItems}){
                     </thead>
                 </Table>
                 </div>
-
-                {/* <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
-                    <Table  style={{width:"650px"}}>
-                    <thead>
-                        <tr > 
-                            <th style={styles.textLeft}> SEMESTER 2/2021 : {(formatNumber(dataSem7))}</th>
-                            <th colSpan={3}></th>
-                        </tr >
-                    </thead>
-                </Table>
-                </div> */}
 
                 <Col>
                     <Button className="button-size" backgroundcolor="#87CEEB" onClick={clearTable}>

@@ -326,9 +326,9 @@ class List extends Component {
                     {this.state.data.map((dataDetail) =>
                         <li>
                             <div style={{color: "F5F5F5" , marginTop:"10px", marginLeft:"30px", borderBottom: "1px solid grey",fontSize:"14px"}}>{dataDetail.sem}
-                                <ol style={{color: "F5F5F5" , marginTop:"10px",marginBottom: "20px",  fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>
+                                <ol  style={{color: "F5F5F5" , marginTop:"10px",marginBottom: "20px",  fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>
                                     {dataDetail.details.map((sub) =>
-                                        <li style={styles.textLeft}>{sub.code} {sub.credit} <br>
+                                        <li  style={styles.textLeft}>{sub.code} {sub.credit} <br>
                                             </br>
                                             { sub.name}<br>
                                             </br>

@@ -10,7 +10,6 @@ import List from "./List";
 import Line from "./Line";
 import jsonData from './details.json';
 
-
 var semCount= new Map();
 
 function App() {
@@ -29,8 +28,8 @@ function App() {
         alert("Item name is empty");
         return;
       }
-  
-    const sId= idRef.current.value
+    
+    const sID=idRef.current.value;
     const currYear= yearRef.current.value
     // const subject = idList.find( e => e.id == sId)
 
@@ -44,7 +43,7 @@ function App() {
     } else {
       semCount.set(currYear, 1);
     }
-  
+    
     var subjectObj = {
       year: yearRef.current.value,
       id: idRef.current.value,
@@ -127,11 +126,6 @@ function App() {
                                   {details[7].subjects.map (v => (<option key={v.id} value={v.id}>{v.name}</option>))}
                                 </Form.Select>
                               </Form.Group>
-                  
-                              {/* <Form.Group className="mb-3" controlId="formElective">
-                                <Form.Label> Free Elective </Form.Label>
-                                <Form.Control style={{backgroundColor:'#C1C1C1'}} className="form-control" type="text" placeholder="Add free elective courses" ref={freeRef}/>
-                              </Form.Group> */}
                
                               <Form.Group className="mb-3" controlId="formGrade">
                                   <Form.Label style={{fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>GRADE</Form.Label>
@@ -141,7 +135,7 @@ function App() {
                                     </Form.Select>
                               </Form.Group> 
       
-                            <Button className="button-size" backgroundColor="#87CEEB" onClick={addItem }>
+                            <Button className="button-size" style={{backgroundColor:"#87CEEB"}} onClick={addItem }>
                               Add
                             </Button>
                           </Form>
@@ -158,8 +152,8 @@ function App() {
                       <Col>
                         <Grade data={dataItems} setDataItems={setDataItems}/>
                       </Col>
-                  </Tab>
-                  <Tab eventKey="fourth" title="Progress">
+                    </Tab>
+                   <Tab eventKey="fourth" title="Progress">
                       <Col>
                         <div><Line/></div>
                       </Col>
@@ -172,29 +166,7 @@ function App() {
 
     
     }
-      export default App;
+
+
+    export default App;
      
-    // const yearList = [
-    //   {idYear : "y001" , name: 2016},
-    //   {idYear : "y002" , name: 2017},
-    //   {idYear : "y003" , name: 2018},
-    //   {idYear : "y004" , name: 2019},
-    //   {idYear : "y005" , name: 2020},
-    //   {idYear : "y006" , name: 2021},
-    //   {idYear : "y007" , name: 2022},
-    // ];
-  
-    // const semList = [
-    //   {idSem : "s001", nameSem: 1},
-    //   {idSem : "s002", nameSem: 2},
-    //   {idSem : "s003", nameSem: 3},
-    // ];
-  
-    // const idList = [
-    //   {id: "i001", name: 1001 , subject: "BG 1001 English"},
-    //   {id: "i002", name: 2130, subject: "Systems Science"},
-    //   {id: "i003", name: 1121, subject: "Basic Mathematics and Statistics"},
-    //   {id: "i004", name: 1201, subject: "Computer Programming 1"},
-    //   {id: "i005", name: 14031, subject: "Professional Ethics Seminar 1"},
-    //   {id: "i006", name: 1101, subject: "Introduction To Business"},
-    // ]
