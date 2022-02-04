@@ -12,6 +12,11 @@ import jsonData from './details.json';
 
 var semCount= new Map();
 
+const styles ={
+    bold: {fontWeight: 'bold',color:'#187bcd'},
+    label: {fontSize: '15px' ,fontFamily:'Segoe UI', color:'#187bcd',fontWeight: 'bold'}
+}
+
 function App() {
   const yearRef= useRef();
   const idRef=useRef();
@@ -80,26 +85,27 @@ function App() {
               <div className="wrapper" style={{ display: 'block', width: 1000}}>
                 <Tabs className="center-alignment" defaultActiveKey="second">
                   <Tab eventKey="first" title="Add Grade" >
-                    <h3 className="center-alignment" style={{paddingTop:"18px", paddingBottom:"20px", fontSize: '20px' ,fontFamily:'Segoe UI', color:'#525050'}}>ADD DESIRED COURSES</h3>
+                    <h3 className="center-alignment" style={{paddingTop:"18px", paddingBottom:"20px", fontSize: '20px' ,fontFamily:'Segoe UI'}}>ADD DESIRED COURSES</h3>
                       <div className="center-alignment" style={{backgroundColor:"#FAFAFA", marginRight:"10px", borderRadius:"15px"}}>
                         <Row>
                           <Col xs={12} >
                             <Form className="left-alignment"> 
                               <Form.Group className="mb-3" controlId="formYear">
-                                <Form.Label style={{fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>YEAR</Form.Label>
+                                <Form.Label style={styles.label}>YEAR</Form.Label>
                                   <Form.Select 
                                     aria-label="Default select example" style={{backgroundColor:'#C1C1C1', fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}} ref={yearRef} >
+                                    <option style={styles.bold}>SELECT THE SEMESTER YEAR</option>
                                     {details.map (v => (<option key={v.id} value={v.id}>{v.sem}</option>))}
                                   </Form.Select>
                                 </Form.Group>
                 
                             <Form.Group className="mb-3" controlId="formYear">
-                              <Form.Label style={{fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>COURSE ID</Form.Label>
+                              <Form.Label style={styles.label}>COURSE ID</Form.Label>
                                 <Form.Select 
                                   aria-label="Default select example" 
                                   style={{backgroundColor:'#C1C1C1', fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}
-                                  ref={idRef} 
-                                  onChange={productChange}>
+                                  ref={idRef}>
+                                  <option style={styles.bold}>SELECT THE COURSE ID</option>
                                   {details[0].subjects.map (v => (<option key={v.id} value={v.id}>{v.code}</option>))}
                                   {details[1].subjects.map (v => (<option key={v.id} value={v.id}>{v.code}</option>))}
                                   {details[2].subjects.map (v => (<option key={v.id} value={v.id}>{v.code}</option>))}
@@ -108,14 +114,14 @@ function App() {
                                   {details[5].subjects.map (v => (<option key={v.id} value={v.id}>{v.code}</option>))}
                                   {details[6].subjects.map (v => (<option key={v.id} value={v.id}>{v.code}</option>))}
                                   {details[7].subjects.map (v => (<option key={v.id} value={v.id}>{v.code}</option>))}
-                                 
                                 </Form.Select>
                             </Form.Group>
     
                             <Form.Group className="mb-3" controlId="formSubject">
-                                <Form.Label style={{fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}> COURSE NAME </Form.Label>
+                                <Form.Label style={styles.label}> COURSE NAME </Form.Label>
                                 <Form.Select aria-label="Default select example" 
                                   style={{backgroundColor:'#C1C1C1', fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}} ref={subjectRef}>
+                                  <option style={styles.bold}>SELECT THE COURSE NAME</option>
                                   {details[0].subjects.map (v => (<option key={v.id} value={v.id}>{v.name}</option>))}
                                   {details[1].subjects.map (v => (<option key={v.id} value={v.id}>{v.name}</option>))}
                                   {details[2].subjects.map (v => (<option key={v.id} value={v.id}>{v.name}</option>))}
@@ -128,14 +134,15 @@ function App() {
                               </Form.Group>
                
                               <Form.Group className="mb-3" controlId="formGrade">
-                                  <Form.Label style={{fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>GRADE</Form.Label>
+                                  <Form.Label style={styles.label}>GRADE</Form.Label>
                                   <Form.Select aria-label="Default select example"  
                                   style={{backgroundColor:'#C1C1C1', fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}} ref={gradeRef}>
+                                    <option style={styles.bold}>SELECT THE GRADE</option>
                                     {details[8].grades.map(v=>(<option key={v.id} value = {v.id}>{v.grade}</option>))}
                                     </Form.Select>
                               </Form.Group> 
       
-                            <Button className="button-size" style={{backgroundColor:"#87CEEB"}} onClick={addItem }>
+                            <Button className="button-size" style={{backgroundColor:"#187bcd"}} onClick={addItem }>
                               Add
                             </Button>
                           </Form>

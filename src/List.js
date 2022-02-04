@@ -4,7 +4,9 @@ import React, {Component} from 'react';
 const styles = {
     textCenter: {textAlign: 'center'},
     textRight: {textAlign: 'right'},
-    textLeft: {textAlign:'left', padding:"10px"}
+    textLeft: {textAlign:'left', padding:"10px",color:'#525050', fontWeight:"normal"},
+    light: {color: "F5F5F5" , marginTop:"10px",marginBottom: "20px",  fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'},
+    label: {fontSize: '15px' ,fontFamily:'Segoe UI', color:'#3a9bdc',fontWeight:"bold"}
 };
 
 class List extends Component {
@@ -325,8 +327,8 @@ class List extends Component {
                 <ol style={{listStyleType:"upper-roman"}}>
                     {this.state.data.map((dataDetail) =>
                         <li>
-                            <div style={{color: "F5F5F5" , marginTop:"10px", marginLeft:"30px", borderBottom: "1px solid grey",fontSize:"14px"}}>{dataDetail.sem}
-                                <ol  style={{color: "F5F5F5" , marginTop:"10px",marginBottom: "20px",  fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>
+                            <div style={styles.label}>{dataDetail.sem}
+                                <ol  style={styles.light}>
                                     {dataDetail.details.map((sub) =>
                                         <li  style={styles.textLeft}>{sub.code} {sub.credit} <br>
                                             </br>

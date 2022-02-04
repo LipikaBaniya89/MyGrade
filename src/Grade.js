@@ -5,19 +5,22 @@ import { FaTrash } from 'react-icons/fa';
 
     
 const styles = {
-    textCenter: {textAlign: 'center',  fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'},
+    textCenter: {textAlign: 'center',  fontSize: '15px' ,fontFamily:'Segoe UI', color:'#FFFFFF'},
     textRight: {textAlign:'right', fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'},
-    textLeft: {textAlign:'left', fontSize: '14px' ,fontFamily:'Segoe UI', color:'#525050', paddingLeft:"10px"}
+    textLeft: {textAlign:'left', fontSize: '14px' ,fontFamily:'Segoe UI', color:'#525050', paddingLeft:"10px"},
+    bold: {fontWeight: 'bold',color:'#187bcd'},
+    textLeftWithColor: {fontSize: '15px' ,fontFamily:'Segoe UI', color:'#3a9bdc',textAlign:'left',paddingLeft:"10px"}
+    
 };
 
-var semCount= new Map();
-var semCount1= new Map();
-var semCount2=new Map();
-var semCount3=new Map();
-var semCount4=new Map();
-var semCount5=new Map();
-var semCount6=new Map();
-var semCount7=new Map();
+var semCount = [];
+var semCount1 = [];
+var semCount2 = [];
+var semCount3 = [];
+var semCount4 = [];
+var semCount5 = [];
+var semCount6 = [];
+var semCount7 = [];
 
 
 function Grade({data,setDataItems}){
@@ -57,7 +60,6 @@ function Grade({data,setDataItems}){
 
         const z= data.map((v,i) => {
 
-
             if (v.grade==="A") {
                 v.grade=4.0;
             } 
@@ -91,58 +93,58 @@ function Grade({data,setDataItems}){
             if (v.grade==="W") {
                 v.grade=0.0;
             }
-            
-            if (v.year==="SEMESTER 2/2018") {
-                semFinal+=v.grade * credit;
-                semCount.set(semFinal)
-                sem=semFinal/(credit*semCount.size);
-                  
-            }
+          // Change here
+          if (v.year==="SEMESTER 2/2018") {
+            semFinal+=v.grade * credit;
+            semCount.push(v)
+            sem=semFinal/(credit*semCount.length);
+              
+        }
 
-            if (v.year==="SEMESTER 1/2019") {
-                semFinal1+=v.grade * credit;
-                semCount1.set(semFinal1)
-                sem1=semFinal1/(credit*semCount1.size);
-            }
-      
-            if (v.year==="SEMESTER 2/2019") {
-                semFinal2+=v.grade * credit;
-                semCount2.set(semFinal2)
-                sem2=semFinal2/(credit*semCount2.size);
-            }
+        if (v.year==="SEMESTER 1/2019") {
+            semFinal1+=v.grade * credit;
+            semCount1.push(v)
+            sem1=semFinal1/(credit*semCount1.length);
+        }
+  
+        if (v.year==="SEMESTER 2/2019") {
+            semFinal2+=v.grade * credit;
+            semCount2.push(v)
+            sem2=semFinal2/(credit*semCount2.length);
+        }
 
-            if (v.year==="SEMESTER 1/2020") {
-                semFinal3+=v.grade * credit;
-                semCount3.set(semFinal3)
-                sem3=semFinal3/(credit*semCount3.size);
-            }
+        if (v.year==="SEMESTER 1/2020") {
+            semFinal3+=v.grade * credit;
+            semCount3.push(v)
+            sem3=semFinal3/(credit*semCount3.length);
+        }
 
-            if (v.year==="SEMESTER 2/2020") {
-                semFinal4+=v.grade * credit;
-                semCount4.set(semFinal4)
-                sem4=semFinal4/(credit*semCount4.size);
-            }
+        if (v.year==="SEMESTER 2/2020") {
+            semFinal4+=v.grade * credit;
+            semCount4.push(v)
+            sem4=semFinal4/(credit*semCount4.length);
+        }
 
-            if (v.year==="SEMESTER 3/2020") {
-                semFinal5+=v.grade * credit;
-                semCount5.set(semFinal5)
-                sem5=semFinal5/(credit*semCount5.size);
-            }
+        if (v.year==="SEMESTER 3/2020") {
+            semFinal5+=v.grade * credit;
+            semCount5.push(v)
+            sem5=semFinal5/(credit*semCount5.length);
+        }
 
-            if (v.year==="SEMESTER 1/2021") {
-                semFinal6+=v.grade * credit;
-                semCount6.set(semFinal6)
-                sem6=semFinal6/(credit*semCount6.size);
-            }
+        if (v.year==="SEMESTER 1/2021") {
+            semFinal6+=v.grade * credit;
+            semCount6.push(v)
+            sem6=semFinal6/(credit*semCount6.length);
+        }
 
-            if (v.year==="SEMESTER 2/2021") {
-                semFinal7+=v.grade * credit;
-                semCount7.set(semFinal7)
-                sem7=semFinal7/(credit*semCount7.size);
-            }
+        if (v.year==="SEMESTER 2/2021") {
+            semFinal7+=v.grade * credit;
+            semCount7.push(v)
+            sem7=semFinal7/(credit*semCount7.length);
+        }
 
-            finalScore+=v.grade * credit;
-            total=finalScore/(credit*data.length);
+        finalScore+=v.grade * credit;
+        total=finalScore/(credit*data.length);
   
             if (v.grade===4.0) {
                 v.grade="A";
@@ -181,10 +183,14 @@ function Grade({data,setDataItems}){
             return (
                 <tr key={i}>  
                     <td style={styles.textLeft}>{v.year}</td>
+                    <td style={styles.textLeft}>{v.id}</td>
                     <td style={styles.textLeft}>{v.subject}</td>
                     <td style={styles.textLeft}>{v.grade}</td>
-                    <td style={styles.textLeft}><FaTrash onClick={() => deleteClick(i)}/></td>   
+                    <td style={styles.textLeft}><FaTrash onClick={() => deleteClick(i)}/></td>  
+                  
+                    <th colSpan={4}></th> 
                 </tr>
+
             );
         });
         // setDataRows(z);
@@ -221,33 +227,31 @@ function Grade({data,setDataItems}){
             <Container className="center-alignment">
                 <Row>
                     <Col>
-                    <h3 style={{paddingTop:"20px", fontSize: '18px' ,fontFamily:'Segoe UI', color:'#525050'}}>ESTIMATE GRADE</h3>
+                    <h3 style={{paddingTop:"20px", fontSize: '18px' ,fontFamily:'Segoe UI'}}>ESTIMATE GRADE</h3>
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col>
-                    <h3 style={{paddingTop:"10px", paddingBottom:"10px", fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>CUMULATIVE GRADE POINT AVERAGE : </h3>
-                    </Col>
-                </Row>
-                <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
+                    <div>
+                        <Table style={{width: "60px",marginLeft:"580px",backgroundColor:"#3a9bdc",borderRadius:"20px"}}>
+                            <thead>
+                                <th style={styles.textCenter}>{(formatNumber(dataTotal))}</th>
+                            </thead>
+
+                        </Table>
+                    </div>
+
+                <div style={{backgroundColor:"#FFFFFF", borderRadius:"20px", width:"650px"}}>
                     <Table  style={{width:"650px"}}>
                     <thead>
                         <tr> 
-                            <th style={styles.textLeft}>SEMESTER</th>
-                            <th style={styles.textLeft}>COURSE</th>
-                            <th style={styles.textLeft}>GRADE</th>
+                            <th style={styles.textLeftWithColor }>SEMESTER</th>
+                            <th style={styles.textLeftWithColor }>CODE</th>
+                            <th style={styles.textLeftWithColor}>COURSE</th>
+                            <th style={styles.textLeftWithColor}>GRADE</th>
                             <th colSpan={8}></th>
                         </tr>
                     </thead>
-                    <tfoot style={{color:"#808080"}}>
-                        <tr>
-                        <th style={styles.textLeft}>CGPA</th>
-                        <th style={styles.textLeft}>  {(formatNumber(dataTotal))}</th>
-                        </tr>
-                    </tfoot>
                     <tbody>{dataRows}</tbody>
-                   
                 </Table>
                 </div>
 
