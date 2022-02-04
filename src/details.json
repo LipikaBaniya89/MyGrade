@@ -1,7 +1,7 @@
 {
     "faculty": [
         {
-            "sem": "SEMESTER 2/2018",
+            "sem": "2/2018",
             "subjects" : [
                 {
                     "code" : "MGT 1101 ",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "sem": "SEMESTER 1/2019",   
+            "sem": "1/2019",   
             "subjects" : [
                     {
                         "code" : "IT 2230  ",
@@ -77,7 +77,7 @@
                 ]
             },
             {
-                "sem": "SEMESTER 2/2019",
+                "sem": "2/2019",
                 "subjects" : [
                     {
                         "code" : "IT 3253 ",
@@ -117,7 +117,7 @@
                 ]
             },
             {
-                "sem": "SEMESTER 1/2020",
+                "sem": "1/2020",
                 "subjects" : [
                     {
                         "code" : "MT 4201 ",
@@ -157,7 +157,7 @@
                 ]
             },
             {
-                "sem": "SEMESTER 2/2020",
+                "sem": "2/2020",
                 "subjects" : [
                     {
                         "code" : "LA 4606  ",
@@ -197,7 +197,7 @@
                 ]
             },
             {
-                "sem": "SEMESTER 3/2020",
+                "sem": "3/2020",
                 "subjects" : [
                     {
                         "code" : "GE 1301 " ,
@@ -239,7 +239,7 @@
                 ]
             },
             {
-                "sem": "SEMESTER 1/2021",
+                "sem": "1/2021",
                 "subjects" : [
                     {
                         "code" : "IT 4445 ",
@@ -279,7 +279,7 @@
                 ]
             },
             {
-                "sem": "SEMESTER 2/2021",
+                "sem": "2/2021",
                 "subjects" : [
                     {
                         "code" : "IT 4438  ",
@@ -352,7 +352,23 @@
                     },
                     {
                         "grade":"W"
+                    },
+                    {
+                        "grade":"I"
+                    },
+                    {
+                        "grade":"S"
+                    },
+                    {
+                        "grade":"U"
+                    },
+                    {
+                        "grade":"R"
+                    },
+                    {
+                        "grade":"TR"
                     }
+                    
                 ]
 
             }

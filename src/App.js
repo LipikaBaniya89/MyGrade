@@ -21,7 +21,6 @@ function App() {
   const yearRef= useRef();
   const idRef=useRef();
   const subjectRef=useRef();
-  const freeRef=useRef();
   const gradeRef=useRef();
 
   const [dataItems, setDataItems] = useLocalStorage("dataItems",[]);
@@ -70,10 +69,6 @@ function App() {
       const sId= idRef.current.value;
       const option=details.find((e) => e.id === sId);
       subjectRef.current.value=option.subjects.name
-
-      // const sId= idRef.current.value;
-      // const subject=idList.find((e) => e.id == sId);
-      // subjectRef.current.value= subject.subject
     }
 
    
@@ -82,13 +77,13 @@ function App() {
         <div style={{backgroundColor: "#F5F5F5", paddingBottom:"30px"}}>
           <Container>
             <img src="/img/logo.png"></img>
-              <div className="wrapper" style={{ display: 'block', width: 1000}}>
+              <div className="wrapper" style={{ display: 'block', width: 1050}}>
                 <Tabs className="center-alignment" defaultActiveKey="second">
                   <Tab eventKey="first" title="Add Grade" >
                     <h3 className="center-alignment" style={{paddingTop:"18px", paddingBottom:"20px", fontSize: '20px' ,fontFamily:'Segoe UI'}}>ADD DESIRED COURSES</h3>
-                      <div className="center-alignment" style={{backgroundColor:"#FAFAFA", marginRight:"10px", borderRadius:"15px"}}>
+                      <div className="center-alignment" style={{backgroundColor:"#FFFFFF", marginRight:"10px", borderRadius:"15px"}}>
                         <Row>
-                          <Col xs={12} >
+                          <Col xs={14} >
                             <Form className="left-alignment"> 
                               <Form.Group className="mb-3" controlId="formYear">
                                 <Form.Label style={styles.label}>YEAR</Form.Label>

@@ -322,7 +322,7 @@ class List extends Component {
 
     render() {
         return (      
-            <div className="center-alignment" style={{backgroundColor:"#FAFAFA", marginRight:"10px", marginTop:"5px", borderRadius:"15px"}}>
+            <div className="center-alignment" style={{backgroundColor:"#FFFFFF", marginRight:"10px", marginTop:"5px", borderRadius:"15px"}}>
                 <h3>LIST OF SUBJECTS</h3>
                 <ol style={{listStyleType:"upper-roman"}}>
                     {this.state.data.map((dataDetail) =>

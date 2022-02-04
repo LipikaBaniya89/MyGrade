@@ -9,8 +9,8 @@ const styles = {
     textRight: {textAlign:'right', fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'},
     textLeft: {textAlign:'left', fontSize: '14px' ,fontFamily:'Segoe UI', color:'#525050', paddingLeft:"10px"},
     bold: {fontWeight: 'bold',color:'#187bcd'},
-    textLeftWithColor: {fontSize: '15px' ,fontFamily:'Segoe UI', color:'#3a9bdc',textAlign:'left',paddingLeft:"10px"}
-    
+    textLeftWithColor: {fontSize: '15px' ,fontFamily:'Segoe UI', color:'#3a9bdc',textAlign:'left',paddingLeft:"10px"},
+    left: {textAlign:'left', fontSize: '14px' ,fontFamily:'Segoe UI', color:'#525050', paddingLeft:"10px"},
 };
 
 var semCount = [];
@@ -90,54 +90,55 @@ function Grade({data,setDataItems}){
             if (v.grade==="F"){
                 v.grade=0.0;
             }
-            if (v.grade==="W") {
-                v.grade=0.0;
+            if (v.grade==="W" || v.grade==="I" || v.grade==="S" || v.grade==="U" || v.grade==="R" || v.grade==="TR") {
+                v.grade=null;
             }
-          // Change here
-          if (v.year==="SEMESTER 2/2018") {
+
+          
+          if (v.year==="2/2018") {
             semFinal+=v.grade * credit;
             semCount.push(v)
             sem=semFinal/(credit*semCount.length);
               
         }
 
-        if (v.year==="SEMESTER 1/2019") {
+        if (v.year==="1/2019") {
             semFinal1+=v.grade * credit;
             semCount1.push(v)
             sem1=semFinal1/(credit*semCount1.length);
         }
   
-        if (v.year==="SEMESTER 2/2019") {
+        if (v.year==="2/2019") {
             semFinal2+=v.grade * credit;
             semCount2.push(v)
             sem2=semFinal2/(credit*semCount2.length);
         }
 
-        if (v.year==="SEMESTER 1/2020") {
+        if (v.year==="1/2020") {
             semFinal3+=v.grade * credit;
             semCount3.push(v)
             sem3=semFinal3/(credit*semCount3.length);
         }
 
-        if (v.year==="SEMESTER 2/2020") {
+        if (v.year==="2/2020") {
             semFinal4+=v.grade * credit;
             semCount4.push(v)
             sem4=semFinal4/(credit*semCount4.length);
         }
 
-        if (v.year==="SEMESTER 3/2020") {
+        if (v.year==="3/2020") {
             semFinal5+=v.grade * credit;
             semCount5.push(v)
             sem5=semFinal5/(credit*semCount5.length);
         }
 
-        if (v.year==="SEMESTER 1/2021") {
+        if (v.year==="1/2021") {
             semFinal6+=v.grade * credit;
             semCount6.push(v)
             sem6=semFinal6/(credit*semCount6.length);
         }
 
-        if (v.year==="SEMESTER 2/2021") {
+        if (v.year==="2/2021") {
             semFinal7+=v.grade * credit;
             semCount7.push(v)
             sem7=semFinal7/(credit*semCount7.length);
@@ -176,7 +177,7 @@ function Grade({data,setDataItems}){
             if (v.grade===0.0){
                 v.grade="F";
             }
-            if (v.grade===0.0){
+            if (v.grade===null){
                 v.grade="W";
             }
 
@@ -186,14 +187,14 @@ function Grade({data,setDataItems}){
                     <td style={styles.textLeft}>{v.id}</td>
                     <td style={styles.textLeft}>{v.subject}</td>
                     <td style={styles.textLeft}>{v.grade}</td>
-                    <td style={styles.textLeft}><FaTrash onClick={() => deleteClick(i)}/></td>  
-                  
-                    <th colSpan={4}></th> 
+                    <td style={styles.textLeft}><FaTrash onClick={() => deleteClick(i)}/></td>
+                    <th colSpan={4}></th>
                 </tr>
 
             );
+
         });
-        // setDataRows(z);
+
         setDataRows(z)
         setDataTotal(total);
 
@@ -206,6 +207,7 @@ function Grade({data,setDataItems}){
         setDataTotalSem6(sem6);
         setDataTotalSem7(sem7);
     }, [data])
+
 
     const clearTable = () => {
         setDataItems([]);
@@ -232,7 +234,7 @@ function Grade({data,setDataItems}){
                 </Row>
 
                     <div>
-                        <Table style={{width: "60px",marginLeft:"580px",backgroundColor:"#3a9bdc",borderRadius:"20px"}}>
+                        <Table style={{width: "60px",marginLeft:"630px",backgroundColor:"#3a9bdc",borderRadius:"20px"}}>
                             <thead>
                                 <th style={styles.textCenter}>{(formatNumber(dataTotal))}</th>
                             </thead>
@@ -240,8 +242,8 @@ function Grade({data,setDataItems}){
                         </Table>
                     </div>
 
-                <div style={{backgroundColor:"#FFFFFF", borderRadius:"20px", width:"650px"}}>
-                    <Table  style={{width:"650px"}}>
+                <div style={{backgroundColor:"#FFFFFF", borderRadius:"20px", width:"700px"}}>
+                    <Table  style={{width:"700px"}}>
                     <thead>
                         <tr> 
                             <th style={styles.textLeftWithColor }>SEMESTER</th>
@@ -257,67 +259,51 @@ function Grade({data,setDataItems}){
 
                 <Row>
                     <Col>
-                    <h3 style={{paddingTop:"10px", paddingBottom:"10px", fontSize: '15px' ,fontFamily:'Segoe UI', color:'#525050'}}>GRADE EACH SEMESTER : </h3>
+                    <h2>ESTIMATED GRADE OF EACH SEMESTER</h2>
                     </Col>
                 </Row>
 
-                <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"200px"}}>
-                    <Table  style={{width:"200px"}}>   
-                    <thead>
-                        <tr> 
-                            <th style={styles.textLeft}> SEMESTER 2/2018 : {(formatNumber(dataSem))}</th>
-                            <th colSpan={4}></th>
+                <div style={{backgroundColor:"#FFFFFF", borderRadius:"20px", width:"700px"}}>
+                    <Table  style={{width:"700px",height:"80px"}}>   
+                    <thead >
+                        <tr > 
+                            <th style={styles.textLeftWithColor}> SEMESTER 2/2018 </th>
+                            <th style={styles.textLeftWithColor}> SEMESTER 1/2019 </th>
+                            <th style={styles.textLeftWithColor}> SEMESTER 2/2019 </th>
+                            <th style={styles.textLeftWithColor}> SEMESTER 1/2020 </th>
+                         
+                            <th colSpan={8}></th>
                         </tr>
-                    </thead>
+                        </thead>
+                        <td style={styles.left}>{(formatNumber(dataSem))}</td>
+                        <td style={styles.left}>{(formatNumber(dataSem1))}</td>
+                        <td style={styles.left}>{(formatNumber(dataSem2))}</td>
+                        <td style={styles.left}>{(formatNumber(dataSem3))}</td>
+                   
+
+                  
                   
                 </Table>
                 </div>
 
-                <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
-                    <Table  style={{width:"650px"}}>
-                    <thead>
-                        <tr > 
-                            <th style={styles.textLeft}> SEMESTER 1/2019 : {(formatNumber(dataSem1))}</th>
-                            <th style={styles.textRight}> SEMESTER 2/2019 : {(formatNumber(dataSem2))}</th>
-                            <th colSpan={3}></th>
-                        </tr >
-                    </thead>
-                </Table>
-                </div>
 
-                <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
-                    <Table  style={{width:"650px"}}>
+                <div style={{backgroundColor:"#FFFFFF", borderRadius:"20px", width:"700px"}}>
+                    <Table  style={{width:"700px",height:"80px"}}>   
                     <thead>
-                        <tr > 
-                            <th style={styles.textLeft}> SEMESTER 1/2020 : {(formatNumber(dataSem3))}</th>
-                            <th style={styles.textRight}> SEMESTER 2/2020 : {(formatNumber(dataSem4))}</th>
-                          
-                            <th colSpan={3}></th>
-                        </tr >
-                    </thead>
-                </Table>
-                </div>
-
-                <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"200px"}}>
-                    <Table  style={{width:"200px"}}>
-                    <thead>
-                        <tr > 
-                        <th style={styles.textLeft}> SEMESTER 3/2020 : {(formatNumber(dataSem5))}</th>
-                            <th colSpan={3}></th>
-                        </tr >
-                    </thead>
-                </Table>
-                </div>
-
-                <div style={{backgroundColor:"#FAFAFA", borderRadius:"20px", width:"650px"}}>
-                    <Table  style={{width:"650px"}}>
-                    <thead>
-                        <tr > 
-                            <th style={styles.textLeft}> SEMESTER 1/2021 : {(formatNumber(dataSem6))}</th>
-                            <th style={styles.textRight}> SEMESTER 2/2021 : {(formatNumber(dataSem7))}</th>
-                            <th colSpan={3}></th>
-                        </tr >
-                    </thead>
+                        <tr> 
+                            <th style={styles.textLeftWithColor}> SEMESTER 2/2020 </th>
+                            <th style={styles.textLeftWithColor}> SEMESTER 3/2020 </th>
+                            <th style={styles.textLeftWithColor}> SEMESTER 1/2021 </th>
+                            <th style={styles.textLeftWithColor}> SEMESTER 2/2021 </th>
+                            <th colSpan={8}></th>
+                        </tr>
+                        </thead>
+                        <td style={styles.left}>{(formatNumber(dataSem4))}</td>
+                        <td style={styles.left}>{(formatNumber(dataSem5))}</td>
+                        <td style={styles.left}>{(formatNumber(dataSem6))}</td>
+                        <td style={styles.left}>{(formatNumber(dataSem7))}</td>
+                   
+                  
                 </Table>
                 </div>
 
@@ -335,25 +321,3 @@ function Grade({data,setDataItems}){
 
 export default Grade;
 
-   {/* <thead style={{backgroundColor:'#C1C1C1', color:"#000000", borderRadius:"15px"}}>
-                        <tr>
-                            <th>Year</th>
-                            <th>Semester</th>
-                            <th>Course Code</th> 
-                            <th>Course Name</th>
-                            <th>Grade</th> 
-                        </tr>
-                    </thead> */}
-
-    
-// function groupArrayOfObjects(list, key) {
-//     return list.reduce(function(rv, x) {
-//       (rv[x[key]] = rv[x[key]] || []).push(x);
-//       return rv;
-//     }, {});
-//   };
-
-// var array=[}]
-
-// var groupedArray=groupArrayOfObjects(array,"year")
-// console.log(groupedArray.SEMESTER)
